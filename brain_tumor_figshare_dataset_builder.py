@@ -13,7 +13,6 @@ class Builder(tfds.core.GeneratorBasedBuilder):
 
   def _info(self) -> tfds.core.DatasetInfo:
     """Returns the dataset metadata."""
-    # TODO(brain_tumor_figshare): Specifies the tfds.core.DatasetInfo object
     return self.dataset_info_from_configs(
         features=tfds.features.FeaturesDict({
             # These are the features of your dataset like images, labels ...
@@ -30,8 +29,7 @@ class Builder(tfds.core.GeneratorBasedBuilder):
   # https://www.tensorflow.org/datasets/add_dataset#specifying_dataset_splits
   def _split_generators(self, dl_manager: tfds.download.DownloadManager):
     """Returns SplitGenerators."""
-    path = dl_manager.download_and_extract('http://127.0.0.1:8000/figshare.zip')
-    # path = dl_manager.download_and_extract('https://assets.birkhoff.me/research/datasets/figshare.zip')
+    path = dl_manager.download_and_extract('https://assets.birkhoff.me/research/datasets/figshare.zip')
 
     return {
         'train': self._generate_examples(path),
