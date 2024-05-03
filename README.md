@@ -46,6 +46,31 @@ Note that I have not yet implemented the test scripts; please contribute if you 
 > Southern Medical University, Guangzhou, China
 > Email: chengjun583@qq.com
 
+## Usage
+
+For example, on Google Colab:
+
+```
+!wget https://github.com/BirkhoffLee/dataset-figshare/archive/refs/heads/main.zip
+!unzip main.zip
+!rm main.zip
+!mv dataset-figshare-main brain_tumor_figshare
+!tfds build brain_tumor_figshare
+```
+
+After it's built, you can use it as a normal TFDS dataset:
+
+```python
+import matplotlib.pyplot as plt
+import numpy as np
+
+import tensorflow as tf
+import tensorflow_datasets as tfds
+
+ds, info = tfds.load('brain_tumor_figshare', split='all', with_info=True)
+tfds.as_dataframe(ds.take(4), info) # This takes 4 data and plots them
+```
+
 ## License
 
 The original dataset is licensed under the CC BY 4.0 License. If you use this dataset, please cite the original authors.
